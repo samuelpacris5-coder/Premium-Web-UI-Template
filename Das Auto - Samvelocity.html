@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SamVelocity | Drive the Future at Full Velocity</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#0B0B0B',
+                            blue: '#00E5FF',
+                            purple: '#7A00FF',
+                            gray: '#1A1A1A',
+                            light: '#F5F5F5'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Syncopate', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'neon-gradient': 'linear-gradient(90deg, #00E5FF 0%, #7A00FF 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B0B0B;
+            color: #F5F5F5;
+            overflow-x: hidden;
+        }
+        
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .glass-nav {
+            background: rgba(11, 11, 11, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Neon & Glow Effects */
+        .neon-text {
+            background: linear-gradient(90deg, #00E5FF, #7A00FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-neon {
+            position: relative;
+            background: transparent;
+            border: 1px solid #00E5FF;
+            color: #fff;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+        }
+
+        .btn-neon:hover {
+            background: linear-gradient(90deg, #00E5FF, #7A00FF);
+            border-color: transparent;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.5), 0 0 40px rgba(122, 0, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-solid {
+            background: linear-gradient(90deg, #00E5FF, #7A00FF);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .btn-solid:hover {
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 229, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 229, 255, 0.1);
+        }
+
+        /* Hero Image Overlay */
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(11,11,11,0.2) 0%, rgba(11,11,11,1) 100%);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0B0B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00E5FF;
+        }
+
+        .clip-path-slant {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+    </style>
+</head>
+<body class="font-body antialiased selection:bg-brand-blue selection:text-brand-black">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+            <a href="#" class="font-heading font-bold text-2xl tracking-widest text-white flex items-center gap-2">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#paint0_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#00E5FF"/>
+                            <stop offset="1" stop-color="#7A00FF"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+                SAM<span class="neon-text">VELOCITY</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm uppercase tracking-wider font-medium">
+                <a href="#models" class="hover:text-brand-blue transition-colors">Models</a>
+                <a href="#technology" class="hover:text-brand-blue transition-colors">Technology</a>
+                <a href="#about" class="hover:text-brand-blue transition-colors">About</a>
+            </div>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#contact" class="text-sm uppercase tracking-wider font-medium hover:text-brand-blue transition-colors">Sign In</a>
+                <a href="#contact" class="btn-solid px-6 py-2 rounded-none font-heading text-xs uppercase tracking-widest">Reserve Now</a>
+            </div>
+
+            <button class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=2071&auto=format&fit=crop" alt="SamVelocity Flagship" class="w-full h-full object-cover object-center opacity-60 scale-105" id="hero-img">
+            <div class="absolute inset-0 hero-overlay"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-brand-blue opacity-20 blur-[120px] rounded-full"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto mt-20 gs-reveal">
+            <p class="font-heading text-brand-blue uppercase tracking-[0.3em] text-sm mb-4">Performance Meets Electric Innovation</p>
+            <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl font-bold uppercase leading-tight mb-6 tracking-wide">
+                Drive the Future <br>
+                At Full <span class="neon-text">Velocity</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl font-light max-w-2xl mx-auto mb-10">
+                Experience the raw power of next-generation electric hypercars. Zero emissions. Zero compromises.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="#contact" class="btn-solid w-full sm:w-auto px-10 py-4 font-heading text-sm uppercase tracking-widest">Reserve Now</a>
+                <a href="#models" class="btn-neon w-full sm:w-auto px-10 py-4 font-heading text-sm uppercase tracking-widest">Explore Models</a>
+            </div>
+            <p class="mt-6 text-xs text-gray-500 uppercase tracking-widest flex items-center justify-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> Limited Reservations Open for 2026
+            </p>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-bounce">
+            <span class="text-[10px] uppercase tracking-widest text-gray-400">Scroll</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="text-gray-400"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+    </section>
+
+    <section class="py-20 border-y border-white/5 relative overflow-hidden bg-brand-black">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-purple opacity-10 blur-[100px] rounded-full"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
+                <div class="gs-stat">
+                    <h3 class="font-heading text-4xl md:text-6xl font-bold text-white mb-2"><span class="counter" data-target="1.85">0</span><span class="text-brand-blue text-3xl">s</span></h3>
+                    <p class="text-gray-400 text-sm uppercase tracking-widest">0-100 km/h</p>
+                </div>
+                <div class="gs-stat">
+                    <h3 class="font-heading text-4xl md:text-6xl font-bold text-white mb-2"><span class="counter" data-target="1200">0</span><span class="text-brand-blue text-3xl">hp</span></h3>
+                    <p class="text-gray-400 text-sm uppercase tracking-widest">Peak Power</p>
+                </div>
+                <div class="gs-stat">
+                    <h3 class="font-heading text-4xl md:text-6xl font-bold text-white mb-2"><span class="counter" data-target="850">0</span><span class="text-brand-blue text-3xl">km</span></h3>
+                    <p class="text-gray-400 text-sm uppercase tracking-widest">Est. Range</p>
+                </div>
+                <div class="gs-stat">
+                    <h3 class="font-heading text-4xl md:text-6xl font-bold text-white mb-2"><span class="counter" data-target="15">0</span><span class="text-brand-blue text-3xl">m</span></h3>
+                    <p class="text-gray-400 text-sm uppercase tracking-widest">Charge Time (80%)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="models" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gs-reveal">
+                <div>
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold uppercase tracking-wide mb-4">The <span class="neon-text">Lineup</span></h2>
+                    <p class="text-gray-400 max-w-xl">Aerospace-grade engineering applied to the asphalt. Choose your level of extreme.</p>
+                </div>
+                <a href="#" class="mt-6 md:mt-0 text-brand-blue uppercase tracking-widest text-sm font-medium hover:text-white transition-colors flex items-center gap-2 group">
+                    View All Models 
+                    <svg class="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-panel card-hover rounded-xl overflow-hidden group gs-reveal relative">
+                    <div class="absolute top-4 right-4 z-10 bg-brand-black/80 backdrop-blur-md px-3 py-1 rounded text-[10px] uppercase tracking-widest border border-white/10">Available Now</div>
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-blue/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 mix-blend-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=2070&auto=format&fit=crop" alt="SamVelocity V1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-heading text-2xl font-bold uppercase mb-1">Velocity <span class="text-brand-blue">V1</span></h3>
+                        <p class="text-gray-400 text-sm mb-6">The Grand Tourer.</p>
+                        
+                        <div class="grid grid-cols-3 gap-4 border-t border-white/10 pt-6 mb-8">
+                            <div>
+                                <p class="text-white font-bold font-heading text-lg">2.1s</p>
+                                <p class="text-gray-500 text-[10px] uppercase tracking-widest">0-100</p>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold font-heading text-lg">350<span class="text-xs">km/h</span></p>
+                                <p class="text-gray-500 text-[10px] uppercase tracking-widest">Top Speed</p>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold font-heading text-lg">900<span class="text-xs">km</span></p>
+                                <p class="text-gray-500 text-[10px] uppercase tracking-widest">Range</p>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact" class="block w-full text-center btn-neon py-3 font-heading text-xs uppercase tracking-widest">Reserve Model</a>
+                    </div>
+                </div>
+
+                <div class="glass-panel card-hover rounded-xl overflow-hidden group gs-reveal relative">
+                    <div class="absolute top-4 right-4 z-10 bg-brand-blue text-brand-black px-3 py-1 rounded text-[10px] uppercase font-bold tracking-widest">Flagship</div>
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 mix-blend-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=2071&auto=format&fit=crop" alt="SamVelocity R-Spec" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-heading text-2xl font-bold uppercase mb-1">Velocity <span class="text-brand-purple">R-Spec</span></h3>
+                        <p class="text-gray-400 text-sm mb-6">Track-Focused Hypercar.</p>
+                        
+                        <div class="grid grid-cols-3 gap-4 border-t border-white/10 pt-6 mb-8">
+                            <div>
+                                <p class="text-white font-bold font-heading text-lg">1.85s</p>
+                                <p class="text-gray-500 text-[10px] uppercase tracking-widest">0-100</p>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold font-heading text-lg">412<span class="text-xs">km/h</span></p>
+                                <p class="text-gray-500 text-[10px] uppercase tracking-widest">Top Speed</p>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold font-heading text-lg">650<span class="text-xs">km</span></p>
+                                <p class="text-gray-500 text-[10px] uppercase tracking-widest">Range</p>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact" class="block w-full text-center btn-solid py-3 font-heading text-xs uppercase tracking-widest rounded-none">Reserve Model</a>
+                    </div>
+                </div>
+
+                <div class="glass-panel card-hover rounded-xl overflow-hidden group gs-reveal relative">
+                    <div class="absolute top-4 right-4 z-10 bg-brand-black/80 backdrop-blur-md px-3 py-1 rounded text-[10px] uppercase tracking-widest border border-white/10">Concept 2027</div>
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity z-10 mix-blend-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?q=80&w=2000&auto=format&fit=crop" alt="SamVelocity X" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-heading text-2xl font-bold uppercase mb-1">Project <span class="text-white">X</span></h3>
+                        <p class="text-gray-400 text-sm mb-6">The Future SUV.</p>
+                        
+                        <div class="grid grid-cols-3 gap-4 border-t border-white/10 pt-6 mb-8">
+                            <div>
+                                <p class="text-white font-bold font-heading text-lg">2.8s</p>
+                                <p class="text-gray-500 text-[10px] uppercase tracking-widest">0-100</p>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold font-heading text-lg">280<span class="text-xs">km/h</span></p>
+                                <p class="text-gray-500 text-[10px] uppercase tracking-widest">Top Speed</p>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold font-heading text-lg">1100<span class="text-xs">km</span></p>
+                                <p class="text-gray-500 text-[10px] uppercase tracking-widest">Range</p>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact" class="block w-full text-center btn-neon py-3 font-heading text-xs uppercase tracking-widest">Join Waitlist</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="technology" class="py-32 bg-brand-gray relative clip-path-slant pb-48">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-20 gs-reveal">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold uppercase tracking-wide mb-6">Engineered for <br><span class="neon-text">Dominance</span></h2>
+                <p class="text-gray-400">We don't just build cars. We build highly advanced energy systems wrapped in aerodynamic carbon fiber.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+                <div class="flex gap-6 gs-reveal">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-black border border-brand-blue flex items-center justify-center text-brand-blue">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-heading text-xl uppercase font-bold mb-3">Solid-State Battery Tech</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Our proprietary structural battery pack reduces weight by 30% while increasing energy density. Charge from 10% to 80% in exactly 15 minutes.</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 gs-reveal">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-black border border-brand-purple flex items-center justify-center text-brand-purple">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-heading text-xl uppercase font-bold mb-3">AI-Driven Aerodynamics</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Active aero elements adjust 100 times per second based on predictive AI, ensuring maximum downforce in corners and zero drag on straights.</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 gs-reveal">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-black border border-white/20 flex items-center justify-center text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-heading text-xl uppercase font-bold mb-3">Carbon Monocoque</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Forged from a single piece of F1-grade carbon fiber. Unmatched torsional rigidity providing the ultimate safety cell and handling precision.</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 gs-reveal">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-black border border-brand-blue flex items-center justify-center text-brand-blue">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-heading text-xl uppercase font-bold mb-3">100% Clean Supply Chain</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Luxury shouldn't cost the earth. Every SamVelocity vehicle is manufactured in carbon-neutral facilities using ethically sourced materials.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 relative -mt-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="glass-panel p-8 rounded-xl border-l-4 border-l-brand-blue gs-reveal">
+                    <div class="flex text-brand-blue mb-4">
+                        ★★★★★
+                    </div>
+                    <p class="text-gray-300 italic mb-6">"SamVelocity has achieved what traditional automakers deemed impossible. The R-Spec rewrites the laws of physics."</p>
+                    <p class="font-heading uppercase text-xs tracking-widest font-bold">- AutoPerformance Magazine</p>
+                </div>
+                <div class="glass-panel p-8 rounded-xl border-l-4 border-l-brand-purple gs-reveal">
+                    <div class="flex text-brand-purple mb-4">
+                        ★★★★★
+                    </div>
+                    <p class="text-gray-300 italic mb-6">"The acceleration is violent, yet the cabin remains completely serene. A masterpiece of modern engineering."</p>
+                    <p class="font-heading uppercase text-xs tracking-widest font-bold">- EV Insider</p>
+                </div>
+                <div class="glass-panel p-8 rounded-xl border-l-4 border-l-white gs-reveal">
+                    <div class="flex text-white mb-4">
+                        ★★★★★
+                    </div>
+                    <p class="text-gray-300 italic mb-6">"Reserved my V1 site unseen. After the test drive, I immediately secured an allocation for the Concept X."</p>
+                    <p class="font-heading uppercase text-xs tracking-widest font-bold">- Marcus T., V1 Owner</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap justify-center items-center gap-12 mt-16 opacity-50 grayscale gs-reveal">
+                <h2 class="font-heading text-xl font-bold uppercase">TechCrunch</h2>
+                <h2 class="font-heading text-xl font-bold uppercase">WIRED</h2>
+                <h2 class="font-heading text-xl font-bold uppercase">TopGear</h2>
+                <h2 class="font-heading text-xl font-bold uppercase">Forbes</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=2000&auto=format&fit=crop" alt="Interior" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/90 to-transparent"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 flex flex-col lg:flex-row items-center gap-16">
+            <div class="w-full lg:w-1/2 gs-reveal">
+                <h2 class="font-heading text-4xl md:text-6xl font-bold uppercase tracking-wide mb-6">Secure Your <br><span class="neon-text">Allocation</span></h2>
+                <p class="text-gray-400 mb-8 max-w-md">Production is strictly limited to 500 units globally for the 2026 model year. Schedule your private viewing and test drive today.</p>
+                
+                <ul class="space-y-4 text-sm text-gray-300 mb-12">
+                    <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Priority production queue</li>
+                    <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> VIP access to SamVelocity events</li>
+                    <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Fully refundable $5,000 deposit</li>
+                </ul>
+            </div>
+
+            <div class="w-full lg:w-1/2 gs-reveal">
+                <form class="glass-panel p-8 md:p-12 rounded-2xl relative overflow-hidden">
+                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-purple opacity-30 blur-[50px] rounded-full pointer-events-none"></div>
+                    
+                    <h3 class="font-heading text-2xl uppercase font-bold mb-8">Request Test Drive</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2">First Name</label>
+                                <input type="text" class="w-full bg-brand-black/50 border border-white/10 rounded-none px-4 py-3 text-white focus:outline-none focus:border-brand-blue transition-colors" required>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2">Last Name</label>
+                                <input type="text" class="w-full bg-brand-black/50 border border-white/10 rounded-none px-4 py-3 text-white focus:outline-none focus:border-brand-blue transition-colors" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2">Email Address</label>
+                            <input type="email" class="w-full bg-brand-black/50 border border-white/10 rounded-none px-4 py-3 text-white focus:outline-none focus:border-brand-blue transition-colors" required>
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2">Phone Number</label>
+                            <input type="tel" class="w-full bg-brand-black/50 border border-white/10 rounded-none px-4 py-3 text-white focus:outline-none focus:border-brand-blue transition-colors" required>
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2">Preferred Model</label>
+                            <div class="relative">
+                                <select class="w-full bg-brand-black/50 border border-white/10 rounded-none px-4 py-3 text-white focus:outline-none focus:border-brand-blue appearance-none transition-colors cursor-pointer" required>
+                                    <option value="" disabled selected>Select a model...</option>
+                                    <option value="v1">Velocity V1</option>
+                                    <option value="rspec">Velocity R-Spec</option>
+                                    <option value="x">Project X Waitlist</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-solid w-full py-4 mt-4 font-heading text-sm uppercase tracking-widest flex justify-center items-center gap-2 group">
+                            Schedule Now
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                        
+                        <p class="text-center text-[10px] text-gray-500 mt-4 flex items-center justify-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg> Your information is securely encrypted.
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-black border-t border-white/10 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 lg:col-span-2">
+                    <a href="#" class="font-heading font-bold text-2xl tracking-widest text-white flex items-center gap-2 mb-6">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                        SAM<span class="neon-text">VELOCITY</span>
+                    </a>
+                    <p class="text-gray-400 text-sm max-w-sm mb-8">Redefining high-performance electric vehicles. Engineered for those who refuse to compromise.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-brand-blue hover:text-brand-blue transition-colors">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-brand-purple hover:text-brand-purple transition-colors">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-brand-blue hover:text-brand-blue transition-colors">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-heading uppercase text-sm font-bold mb-6 text-white">Vehicles</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Velocity V1</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Velocity R-Spec</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Project X</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Compare Models</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Configurator</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading uppercase text-sm font-bold mb-6 text-white">Company</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Innovation</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Sustainability</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Press</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-gray-600 uppercase tracking-widest">&copy; 2026 SamVelocity Motors. All Rights Reserved.</p>
+                <div class="flex gap-6 text-xs text-gray-600 uppercase tracking-widest">
+                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms</a>
+                    <a href="#" class="hover:text-white transition-colors">Legal</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Sticky Navbar Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-nav');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-3');
+            } else {
+                navbar.classList.remove('glass-nav');
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-3');
+            }
+        });
+
+        // Hero Image Parallax
+        gsap.to("#hero-img", {
+            yPercent: 20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "section",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Reveal Animations
+        const revealElements = document.querySelectorAll('.gs-reveal');
+        revealElements.forEach((el) => {
+            gsap.fromTo(el, {
+                autoAlpha: 0,
+                y: 50
+            }, {
+                duration: 1,
+                autoAlpha: 1,
+                y: 0,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+
+        // Number Counter Animation
+        const stats = document.querySelectorAll('.gs-stat');
+        stats.forEach((stat) => {
+            const counter = stat.querySelector('.counter');
+            const target = parseFloat(counter.getAttribute('data-target'));
+            
+            ScrollTrigger.create({
+                trigger: stat,
+                start: "top 80%",
+                onEnter: () => {
+                    gsap.to(counter, {
+                        innerHTML: target,
+                        duration: 2,
+                        snap: { innerHTML: target % 1 === 0 ? 1 : 0.01 },
+                        ease: "power2.out",
+                        onUpdate: function() {
+                            if(target % 1 !== 0) {
+                                counter.innerHTML = parseFloat(counter.innerHTML).toFixed(2);
+                            }
+                        }
+                    });
+                },
+                once: true
+            });
+            
+            // Fade in stat
+            gsap.fromTo(stat, { autoAlpha: 0, y: 30 }, {
+                autoAlpha: 1, y: 0, duration: 1, ease: "power3.out",
+                scrollTrigger: {
+                    trigger: stat,
+                    start: "top 80%"
+                }
+            });
+        });
+    </script>
+</body>
+</html>
